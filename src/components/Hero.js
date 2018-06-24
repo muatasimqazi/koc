@@ -17,12 +17,15 @@ const styles = {
         color: '#FFF'
     },
     heroTitle: {
-        fontSize: '3em',
+        fontSize: '2.5em',
         marginTop: '0',
         marginBottom: '0.5em',
     },
     heroInner: {
 
+    },
+    heroTag: {
+        fontWeight: 300,
     },
     button: {
         boxShadow: 'none',
@@ -33,9 +36,9 @@ const Hero = () => (
             <section style={styles.hero}>
                 <div style={styles.heroInner}>
                     <h1 style={styles.heroTitle}>Welcome to King of Castle</h1>
-                    <h2>A service that connects you with this</h2>
+                    <h2 style={styles.heroTag}>A service that connects you with this</h2>
                     <Button variant="contained" size="large" color="primary" style={styles.button}>
-                        Large
+                        Get Started
                     </Button>
                 </div>
             </section>
