@@ -37,3 +37,18 @@ export const FEATURES = [
         description: 'one two three'
     }
 ]
+
+export const TESTIMONIES = [
+    {
+        title: 'Testimony One',
+        description: 'one two three'
+    },
+    {
+        title: 'Testimony Two',
+        description: 'one two three'
+    },
+    {
+        title: 'Testimony Three',
+        description: 'one two three'
+    }
+]

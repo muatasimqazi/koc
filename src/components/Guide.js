@@ -48,7 +48,7 @@ const styles = {
 class Guide extends Component {
     render() {
         const { guide, index } = this.props;
-        const reverse = index % 2 != 0 ? 'row-reverse' : undefined;
+        const reverse = index % 2 !== 0 ? 'row-reverse' : undefined;
         return (
             <Row className="flex-reverse" style={{...styles.flexContainer, flexDirection: reverse}}>
                 <Col sm={5} style={styles.flex}>
