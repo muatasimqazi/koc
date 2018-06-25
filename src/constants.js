@@ -22,3 +22,18 @@ export const GUIDES = [
         icon: 'far fa-user'
     },
 ]
+
+export const FEATURES = [
+    {
+        title: 'Feature One',
+        description: 'one two three'
+    },
+    {
+        title: 'Feature Two',
+        description: 'one two three'
+    },
+    {
+        title: 'Feature Three',
+        description: 'one two three'
+    }
+]

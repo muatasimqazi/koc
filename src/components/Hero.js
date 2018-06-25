@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import HeroImage from '../images/hero.jpg';
 
@@ -37,7 +38,7 @@ const Hero = () => (
                 <div style={styles.heroInner}>
                     <h1 style={styles.heroTitle}>Welcome to King of Castle</h1>
                     <h2 style={styles.heroTag}>A service that connects you with this</h2>
-                    <Button variant="contained" size="large" color="primary" style={styles.button}>
+                    <Button variant="contained" size="large" color="primary" style={styles.button} component={Link} to="/signup">
                         Get Started
                     </Button>
                 </div>
