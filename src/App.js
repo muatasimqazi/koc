@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import MainView from './components/Main';
 import FAQ from './components/FAQ';
@@ -7,11 +7,28 @@ import Login from './components/Login';
 import SignUp from './components/Signup';
 import Footer from './components/Footer';
 import { ROUTES } from './constants';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#4184f6',
+      dark: '#1c6ef9',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 class App extends Component {
   render() {
     return (
-      <div>
+      <MuiThemeProvider theme={theme}>
         <Header/>
         <Switch>
               <Route exact path={ROUTES.home} component={MainView} />
@@ -21,7 +38,7 @@ class App extends Component {
               <Redirect to={ROUTES.home} />
         </Switch>
         <Footer/>
-      </div>
+        </MuiThemeProvider>
     );
   }
 }

@@ -15,9 +15,9 @@ class GuidesView extends Component {
             <section style={styles.container}>
                 <Container>
                         {
-                            GUIDES.map((guide, index) => (
+                            GUIDES.map((guide, index) => 
                                 <Guide guide={guide} index={index} key={index}/>
-                            ))
+                            )
                         }
                         
                 </Container>
