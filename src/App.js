@@ -5,7 +5,9 @@ import MainView from './components/Main';
 import FAQ from './components/FAQ';
 import Login from './components/Login';
 import SignUp from './components/Signup';
+import Footer from './components/Footer';
 import { ROUTES } from './constants';
+
 class App extends Component {
   render() {
     return (
@@ -18,6 +20,7 @@ class App extends Component {
               <Route path={ROUTES.logIn} component={Login} />
               <Redirect to={ROUTES.home} />
         </Switch>
+        <Footer/>
       </div>
     );
   }
