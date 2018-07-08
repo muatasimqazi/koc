@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-grid-system';
 import SimpleCard from './SimpleCard';
 import Button from '@material-ui/core/Button';
@@ -81,7 +82,7 @@ class Login extends Component {
                                 />
                                 <Button size="large" variant="contained" color="primary" style={{marginTop: 20}}>Login</Button>
                             </form>
-                            <p><a href="/">Lost Password</a></p>
+                            <p><Link to="/signup">Create an account</Link></p>
                         </SimpleCard>
                     </Col>
                 </Row>
