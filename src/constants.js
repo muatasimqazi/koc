@@ -25,16 +25,16 @@ export const GUIDES = [
 
 export const FEATURES = [
     {
-        title: 'Feature One',
-        description: 'one two three'
+        title: 'Consumer',
+        description: 'Empowering the consumers to have the real time most accurate, certified and verified real time information available at their fingertips to make smarter decisions.',
     },
     {
-        title: 'Feature Two',
-        description: 'one two three'
+        title: 'Real Estate Professional',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro nam eveniet ipsam ducimus. Itaque nihil quasi, elit soluta sit eaque repellat.',
     },
     {
-        title: 'Feature Three',
-        description: 'one two three'
+        title: 'Franchiser',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro nam eveniet ipsam ducimus. Itaque nihil quasi, velit soluta sit eaque repellat.',
     }
 ]
 

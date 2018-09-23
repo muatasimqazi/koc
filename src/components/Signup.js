@@ -50,6 +50,8 @@ class SignUp extends Component {
         super(props);
         this.state = {
             name: '',
+            email: '',
+            password: '',
             city: ''
         }
     } 
@@ -60,13 +62,17 @@ class SignUp extends Component {
         });
     };
 
+    handleSubmit = event => {
+        alert();
+    }
+
     render() {
         return (
             <Container>
                 <Row style={styles.container}>
                     <Col sm={10}>
                         <SimpleCard title="Sign Up">
-                            <form>
+                            <form onSubmit={evt => this.handleSubmit(evt)}>
                                 <TextField
                                     id="name"
                                     label="Your Name"

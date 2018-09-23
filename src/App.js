@@ -13,7 +13,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       light: '#757ce8',
-      main: '#4184f6',
+      main: '#02c397',
       dark: '#1c6ef9',
       contrastText: '#fff',
     },

@@ -11,8 +11,8 @@ class MainView extends Component {
             <div>
                 <Hero />
                 <Features />
-                <GuidesView/>
-                <Testimonies/>
+                {/* <GuidesView/> */}
+                {/* <Testimonies/> */}
                 <CallToAction/>
             </div>
         );

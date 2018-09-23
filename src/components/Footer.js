@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col } from 'react-grid-system';
 
 const styles = {
     footer: {
@@ -8,9 +9,14 @@ const styles = {
         padding: 20,
     }
 }
+const date = new Date().getFullYear();
 const Footer = () => (
             <div style={styles.footer}>
-                <p>Footer</p>      
+            <Row>
+                <Col sm={12} style={{"textAlign": "center", "top": 70}}>
+                    <p>© {date} Copyright: King of Castle</p>
+                </Col>
+            </Row>
             </div>
         );
 
