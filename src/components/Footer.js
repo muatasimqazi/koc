@@ -14,7 +14,7 @@ const Footer = () => (
             <div style={styles.footer}>
             <Row>
                 <Col sm={12} style={{"textAlign": "center", "top": 70}}>
-                    <p>© {date} Copyright: King of Castle</p>
+                    <p>© {date} Copyright: Cerinfo</p>
                 </Col>
             </Row>
             </div>

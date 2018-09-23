@@ -36,7 +36,7 @@ const styles = {
 const Hero = () => (
             <section style={styles.hero}>
                 <div style={styles.heroInner}>
-                    <h1 style={styles.heroTitle}>Welcome to King of Castle</h1>
+                    <h1 style={styles.heroTitle}>Welcome to Cerinfo</h1>
                     <h2 style={styles.heroTag}>Empowering real estate agents to maximize their productivity</h2>
                     {/* <Button variant="contained" size="large" color="primary" style={styles.button} component={Link} to="/signup">
                         Get Started
