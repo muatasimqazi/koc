@@ -8,12 +8,13 @@ import SignUp from './components/Signup';
 import Footer from './components/Footer';
 import { ROUTES } from './constants';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import app from './base';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: '#757ce8',
-      main: '#02c397',
+      light: '#1955a5',
+      main: '#1955a5',
       dark: '#1c6ef9',
       contrastText: '#fff',
     },
@@ -26,19 +27,48 @@ const theme = createMuiTheme({
   },
 });
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: {}
+    }
+
+  }
+
+  componentDidMount() {
+    this.authUnListen = app.auth().onAuthStateChanged(user => this.setState({ currentUser: user }));
+  }
+
+  componentWillUnmount() {
+    this.authUnListen();
+  }
+
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Header/>
-        <Switch>
+        <Header user={this.state.currentUser}/>
+        {this.state.currentUser ?
+          <div>
+            <Switch>
               <Route exact path={ROUTES.home} component={MainView} />
               <Route path={ROUTES.faq} component={FAQ} />
               <Route path={ROUTES.signUp} component={SignUp} />
               <Route path={ROUTES.logIn} component={Login} />
               <Redirect to={ROUTES.home} />
-        </Switch>
-        <Footer/>
-        </MuiThemeProvider>
+            </Switch>
+            <Footer />
+          </div>
+          :
+          <div>
+            <h1 style={{ textAlign: 'center' }}>Under Construction</h1>
+            <Switch>
+              <Route path={ROUTES.signUp} component={SignUp} />
+              <Route path={ROUTES.logIn} component={Login} />
+            </Switch>
+          </div>
+
+        }
+      </MuiThemeProvider>
     );
   }
 }

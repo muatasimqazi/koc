@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import { ROUTES } from '../constants';
+import app from '../base';
 
 const styles = {
     container: {
@@ -39,7 +41,7 @@ const styles = {
 
 const cities = [
     {
-      name: 'San Francisco',
+        name: 'San Francisco',
     },
     {
         name: 'Seattle',
@@ -48,13 +50,16 @@ const cities = [
 class SignUp extends Component {
     constructor(props) {
         super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSignUp = this.handleSignUp.bind(this);
+
         this.state = {
             name: '',
             email: '',
             password: '',
-            city: ''
+            city: '',
         }
-    } 
+    }
 
     handleChange = name => event => {
         this.setState({
@@ -62,8 +67,18 @@ class SignUp extends Component {
         });
     };
 
-    handleSubmit = event => {
-        alert();
+
+    handleSignUp() {
+        this.setState({ working: true });
+        app.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+            .then(user => user.updateProfile({
+                displayName: this.state.name
+            }))
+            .catch(err => this.setState({ fberror: err }))
+            .then(() => {
+                this.setState({ working: false });
+                this.props.history.push(ROUTES.home);
+            });
     }
 
     render() {
@@ -76,6 +91,7 @@ class SignUp extends Component {
                                 <TextField
                                     id="name"
                                     label="Your Name"
+                                    onChange={this.handleChange('name')}
                                     placeholder="Your full name"
                                     value={this.state.name}
                                     margin="normal"
@@ -84,43 +100,49 @@ class SignUp extends Component {
                                 <TextField
                                     id="email"
                                     label="Your email"
+                                    name='email'
+                                    onChange={this.handleChange('email')}
                                     placeholder="you@yourdomain.com"
-                                    value={this.state.name}
+                                    value={this.state.email}
                                     margin="normal"
                                     fullWidth
                                 />
                                 <TextField
                                     id="password"
                                     label="Password"
-                                    value={this.state.name}
+                                    name='email'
+                                    onChange={this.handleChange('password')}
+                                    value={this.state.password}
                                     margin="normal"
+                                    type="password"
                                     fullWidth
                                 />
                                 <TextField
                                     id="verifyPassword"
                                     label="Verify Password"
-                                    value={this.state.name}
+                                    value={this.state.password}
                                     margin="normal"
+                                    type="password"
                                     fullWidth
                                 />
                                 <TextField
-                                id="select-city"
-                                select
-                                label="Select"
-                                value={this.state.city}
-                                onChange={this.handleChange('city')}
-                                helperText="Please select your city"
-                                margin="normal"
+                                    id="select-city"
+                                    select
+                                    label="Select"
+                                    value={this.state.city}
+                                    onChange={this.handleChange('city')}
+                                    helperText="Please select your city"
+                                    margin="normal"
                                 >
-                                {cities.map(option => (
-                                    <MenuItem key={option.name} value={option.name}>
-                                    {option.name}
-                                    </MenuItem>
-                                ))}
+                                    {cities.map(option => (
+                                        <MenuItem key={option.name} value={option.name}>
+                                            {option.name}
+                                        </MenuItem>
+                                    ))}
                                 </TextField>
 
                             </form>
-                            <Button size="large" variant="contained" color="primary" style={{marginTop: 20}}>Sign Up</Button>
+                            <Button onClick={this.handleSignUp} size="large" variant="contained" color="primary" style={{ marginTop: 20 }}>Sign Up</Button>
                         </SimpleCard>
                     </Col>
                 </Row>

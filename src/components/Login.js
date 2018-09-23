@@ -5,6 +5,8 @@ import SimpleCard from './SimpleCard';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import { ROUTES } from '../constants';
+import app from '../base';
 
 const styles = {
     container: {
@@ -44,8 +46,9 @@ const styles = {
 class Login extends Component {
     constructor(props) {
         super(props);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.state = {
-            name: '',
             email: '',
             password: '',
         }
@@ -56,6 +59,16 @@ class Login extends Component {
             [name]: event.target.value,
         });
     };
+
+    handleLogin(e) {
+        e.preventDefault();
+        app.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
+            this.props.history.push(ROUTES.home);
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
     render() {
         return (
             <Container>
@@ -67,20 +80,24 @@ class Login extends Component {
                             <div style={{ textAlign: 'center', padding: 10, color: 'grey' }}><span style={styles.divider}></span> or <span style={styles.divider}></span></div>
                             <form>
                                 <TextField
-                                    id="username"
-                                    label="Username or email address"
+                                    id="email"
+                                    name='email'
+                                    label="Email address"
+                                    onChange={this.handleChange('email')}
                                     value={this.state.username}
                                     margin="normal"
                                     fullWidth
                                 />
                                 <TextField
                                     id="password"
+                                    name='password'
                                     label="Password"
+                                    onChange={this.handleChange('password')}
                                     value={this.state.password}
                                     margin="normal"
                                     fullWidth
                                 />
-                                <Button size="large" variant="contained" color="primary" style={{marginTop: 20}}>Login</Button>
+                                <Button onClick={this.handleLogin} size="large" variant="contained" color="primary" style={{ marginTop: 20 }}>Login</Button>
                             </form>
                             <p><Link to="/signup">Create an account</Link></p>
                         </SimpleCard>
