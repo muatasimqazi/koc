@@ -3,6 +3,7 @@ export const ROUTES = {
     faq: '/faq',
     signUp: '/signup',
     logIn: '/login',
+    admin: '/admin'
 }
 
 export const GUIDES = [

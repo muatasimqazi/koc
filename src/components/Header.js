@@ -21,6 +21,7 @@ class Header extends Component {
 
     handleSignOut() {
         app.auth().signOut();
+        this.props.history.push(ROUTES.home);
     }
     render() {
         return (
@@ -51,6 +52,11 @@ class Header extends Component {
                                 <Button color="inherit" component={Link} to={ROUTES.logIn}>Login</Button>
                             </React.Fragment>
                         }
+                        {this.props.isAdmin 
+                        ? 
+                        <Button color="inherit" component={Link} to={ROUTES.admin}>Manage Users</Button> 
+                        : 
+                        ""}
                     </Toolbar>
                 </AppBar>
             </div>

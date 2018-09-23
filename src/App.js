@@ -5,6 +5,7 @@ import MainView from './components/Main';
 import FAQ from './components/FAQ';
 import Login from './components/Login';
 import SignUp from './components/Signup';
+import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import { ROUTES } from './constants';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -46,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Header user={this.state.currentUser}/>
+        <Header user={this.state.currentUser} isAdmin={true}/>
         {this.state.currentUser ?
           <div>
             <Switch>
@@ -54,6 +55,7 @@ class App extends Component {
               <Route path={ROUTES.faq} component={FAQ} />
               <Route path={ROUTES.signUp} component={SignUp} />
               <Route path={ROUTES.logIn} component={Login} />
+              <Route path={ROUTES.admin} component={Dashboard} />
               <Redirect to={ROUTES.home} />
             </Switch>
             <Footer />
